@@ -1,0 +1,82 @@
+<style>
+.custom-heading {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+    text-align: {{ block.settings.alignment }};
+    width: {{ block.settings.width }}%;
+    padding: {{ block.settings.padding }};
+  }
+</style>
+
+<h1 class="custom-heading">
+  {{ block.settings.heading }}
+</h1>
+
+{% schema %}
+{
+  "name": "custom-heading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Font Color"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 60,
+      "default": 18,
+      "step": 1,
+      "label": "Font Size"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "25",
+          "label": "25%"
+        },
+        {
+          "value": "50",
+          "label": "50%"
+        },
+        {
+          "value": "75",
+          "label": "75%"
+        },
+        {
+          "value": "100",
+          "label": "100%"
+        }
+      ],
+      "default": "100"
+    },
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "Padding",
+      "default": "0 0 0 0",
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Custom Heading"
+    }
+  ]
+}
+{% endschema %}
