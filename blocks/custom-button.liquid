@@ -1,34 +1,51 @@
 <style>
-    .custom-button-{{ block.id }} {
-        border: none;
-        background-color: {{ block.settings.background_color }};
-        color: {{ block.settings.text_color }};
-        font-size: {{ block.settings.font_size }}px;
-        {% comment %} font-weight: {{ block.settings.font_weight }}; {% endcomment %}
-        padding: {{ block.settings.padding }};
-        border-radius: {{ block.settings.border_radius }}px;
-        border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
-        cursor: pointer;
-    }
-    .custom-button-{{ block.id }}.active {
-        background-color: {{ block.settings.active_background_color | default: 'linear-gradient(#000, #333)' }};
-        color: {{ block.settings.active_text_color | default: '#fff' }};
-    }
+  #shopify-section-{{ section.id }} .custom-button-{{ block.id }} {
+    background-color: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    padding: {{ block.settings.padding }};
+    border-radius: {{ block.settings.border_radius }}px;
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .custom-button.active {
+    background: {{ block.settings.active_background_color | default: 'linear-gradient(#000, #333)' }};
+    color: {{ block.settings.active_text_color | default: '#fff' }};
+    {% comment %} {% if block.settings.active_border == 'none' %}
+        border:none;
+    {% else %} {% endcomment %}
+        border: {{ block.settings.border_width_active }}px solid {{ block.settings.border_color_active }};
+    {% comment %} {% endif %} {% endcomment %}
+  }
 </style>
 
-
-<button class="custom-button-{{ block.id }}" >
-  {{ block.settings.label }}
-</button>   
-
+<div class="custom-button-wrapper-{{ block.id }}">
+  <button
+    class="custom-button custom-button-{{ block.id }} {% if block.settings.active_state == 'true' %}active{% endif %}"
+  >
+    {{ block.settings.label }}
+  </button>
+</div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const button = document.querySelector('.custom-button-{{ block.id }}');
-        button.addEventListener('click', function() {
-            button.classList.add('active');
-        });
+  document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('#shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    const buttons = section.querySelectorAll('.custom-button');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', function () {
+        // remove active from all buttons in THIS section only
+        buttons.forEach((btn) => btn.classList.remove('active'));
+
+        // add active to clicked button
+        this.classList.add('active');
+      });
     });
+  });
 </script>
 
 {% schema %}
@@ -78,7 +95,7 @@
       "type": "number",
       "id": "border_radius",
       "label": "Border Radius",
-      "default": 0,
+      "default": 0
     },
     {
       "type": "number",
@@ -92,14 +109,71 @@
       "label": "Border Color"
     },
     {
-      "type": "color",
+      "type": "select",
+      "id": "active_state",
+      "label": "Show Active Button",
+      "options": [
+        {
+          "value": "true",
+          "label": "Yes"
+        },
+        {
+          "value": "false",
+          "label": "No"
+        }
+      ],
+      "default": "false"
+    },
+    {
+      "type": "color_background",
       "id": "active_background_color",
       "label": "Active Background Color",
+      "default": "linear-gradient(#000, #333)",
+      "visible_if": "{{ block.settings.active_state == 'true' }}"
     },
     {
       "type": "color",
       "id": "active_text_color",
-      "label": "Active Text Color"
+      "label": "Active Text Color",
+      "default": "#fff",
+      "visible_if": "{{ block.settings.active_state == 'true' }}"
+    },
+    {
+      "type": "select",
+      "id": "active_border",
+      "label": "Active Border",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
+      ],
+      "default": "none",
+      "visible_if": "{{ block.settings.active_state == 'true' }}"
+    },
+    {
+      "type": "number",
+      "id": "border_radius_active",
+      "label": "Border Radius Active",
+      "default": 0,
+      "visible_if": "{{ block.settings.active_border == 'solid' }}"
+    },
+    {
+      "type": "number",
+      "id": "border_width_active",
+      "label": "Border Width Active",
+      "default": 1,
+      "visible_if": "{{ block.settings.active_border == 'solid' }}"
+    },
+    {
+      "type": "color",
+      "id": "border_color_active",
+      "label": "Border Color Active",
+      "visible_if": "{{ block.settings.active_border == 'solid' }}"
     }
   ],
   "presets": [
