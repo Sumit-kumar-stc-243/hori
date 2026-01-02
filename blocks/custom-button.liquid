@@ -1,5 +1,27 @@
 <style>
-  #shopify-section-{{ section.id }} .custom-button-{{ block.id }} {
+  .custom-button-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .corner-border {
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    border: 0.5px solid #EE3224;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 2px;
+    display: none;
+    pointer-events: none;
+  }
+
+  .corner-border.left   { top: 5px; left: 5px; }
+  .corner-border.top    { top: 5px; right: 5px; transform: rotate(90deg); }
+  .corner-border.right  { bottom: 5px; right: 5px; transform: rotate(180deg); }
+  .corner-border.bottom { bottom: 5px; left: 5px; transform: rotate(270deg); }
+
+  #shopify-section-{{ section.id }} .custom-button {
     background-color: {{ block.settings.background_color }};
     color: {{ block.settings.text_color }};
     font-size: {{ block.settings.font_size }}px;
@@ -11,37 +33,70 @@
   }
 
   #shopify-section-{{ section.id }} .custom-button.active {
-    background: {{ block.settings.active_background_color | default: 'linear-gradient(#000, #333)' }};
-    color: {{ block.settings.active_text_color | default: '#fff' }};
-    border:none;
+    background: {{ block.settings.active_background_color }};
+    color: {{ block.settings.active_text_color }};
+    border: none;
     border-bottom: 1px solid #EE3224;
   }
 </style>
 
-<div class="custom-button-wrapper-{{ block.id }}">
-  <button
-    class="custom-button custom-button-{{ block.id }} {% if block.settings.active_state == 'true' %}active{% endif %}"
-  >
+<div class="custom-button-wrapper">
+  <button class="custom-button">
     {{ block.settings.label }}
   </button>
+
+  {% if block.settings.show_all_btn_or_not != 'noBorder' %}
+    <span class="corner-border left"></span>
+    <span class="corner-border top"></span>
+    <span class="corner-border right"></span>
+    <span class="corner-border bottom"></span>
+  {% endif %}
 </div>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', () => {
     const section = document.querySelector('#shopify-section-{{ section.id }}');
     if (!section) return;
 
-    const buttons = section.querySelectorAll('.custom-button');
-    if (!buttons.length) return;
+    const mode = "{{ block.settings.show_all_btn_or_not }}";
+    const wrappers = section.querySelectorAll('.custom-button-wrapper');
 
-    // ✅ FIX INITIAL STATE: only one active on load
-    buttons.forEach((btn) => btn.classList.remove('active'));
-    buttons[0].classList.add('active');
+    function hideAllBorders() {
+      wrappers.forEach(w =>
+        w.querySelectorAll('.corner-border').forEach(b => b.style.display = 'none')
+      );
+    }
 
-    // ✅ Click handling (one active at a time)
-    buttons.forEach((button) => {
-      button.addEventListener('click', function () {
-        buttons.forEach((btn) => btn.classList.remove('active'));
-        this.classList.add('active');
+    function showBorders(wrapper) {
+      wrapper.querySelectorAll('.corner-border')
+        .forEach(b => b.style.display = 'block');
+    }
+
+    // ✅ Initial state
+    wrappers.forEach(w => w.querySelector('.custom-button').classList.remove('active'));
+    wrappers[0].querySelector('.custom-button').classList.add('active');
+
+    if (mode === 'Show All') {
+      wrappers.forEach(showBorders);
+    }
+
+    if (mode === 'activeBtn') {
+      hideAllBorders();
+      showBorders(wrappers[0]);
+    }
+
+    // ✅ Click handling
+    wrappers.forEach(wrapper => {
+      const button = wrapper.querySelector('.custom-button');
+
+      button.addEventListener('click', () => {
+        wrappers.forEach(w => w.querySelector('.custom-button').classList.remove('active'));
+        button.classList.add('active');
+
+        if (mode === 'activeBtn') {
+          hideAllBorders();
+          showBorders(wrapper);
+        }
       });
     });
   });
@@ -54,13 +109,8 @@
     {
       "type": "text",
       "id": "label",
-      "label": "Label",
+      "label": "Button Label",
       "default": "Shop Now"
-    },
-    {
-      "type": "url",
-      "id": "link",
-      "label": "Link"
     },
     {
       "type": "color",
@@ -71,7 +121,7 @@
       "type": "color",
       "id": "text_color",
       "label": "Text Color",
-      "default": "#fff"
+      "default": "#ffffff"
     },
     {
       "type": "number",
@@ -88,7 +138,8 @@
     {
       "type": "text",
       "id": "padding",
-      "label": "Padding"
+      "label": "Padding",
+      "default": "10px 20px"
     },
     {
       "type": "number",
@@ -108,34 +159,27 @@
       "label": "Border Color"
     },
     {
-      "type": "select",
-      "id": "active_state",
-      "label": "Show Active Button",
-      "options": [
-        {
-          "value": "true",
-          "label": "Yes"
-        },
-        {
-          "value": "false",
-          "label": "No"
-        }
-      ],
-      "default": "false"
-    },
-    {
       "type": "color_background",
       "id": "active_background_color",
-      "label": "Active Background Color",
-      "default": "linear-gradient(#000, #333)",
-      "visible_if": "{{ block.settings.active_state == 'true' }}"
+      "label": "Active Background",
+      "default": "linear-gradient(#000, #333)"
     },
     {
       "type": "color",
       "id": "active_text_color",
       "label": "Active Text Color",
-      "default": "#fff",
-      "visible_if": "{{ block.settings.active_state == 'true' }}"
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "show_all_btn_or_not",
+      "label": "Corner Border Display",
+      "options": [
+        { "value": "Show All", "label": "Show All Buttons" },
+        { "value": "activeBtn", "label": "Active Button Only" },
+        { "value": "noBorder", "label": "No Border" }
+      ],
+      "default": "activeBtn"
     }
   ],
   "presets": [
