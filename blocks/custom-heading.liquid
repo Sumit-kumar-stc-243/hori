@@ -1,0 +1,43 @@
+<style>
+  #shopify-section-{{ section.id }} .custom-heading {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.font_size }}px;
+  }
+</style>
+
+<h1 class="custom-heading">
+  {{ section.settings.heading }} sumit
+</h1>
+
+{% schema %}
+{
+  "name": "custom-heading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Font Color"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 60,
+      "default": 18,
+      "step": 1,
+      "label": "Font Size"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Custom Heading"
+    }
+  ]
+}
+{% endschema %}
