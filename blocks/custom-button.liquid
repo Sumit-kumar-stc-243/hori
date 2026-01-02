@@ -1,0 +1,111 @@
+<style>
+    .custom-button-{{ block.id }} {
+        border: none;
+        background-color: {{ block.settings.background_color }};
+        color: {{ block.settings.text_color }};
+        font-size: {{ block.settings.font_size }}px;
+        {% comment %} font-weight: {{ block.settings.font_weight }}; {% endcomment %}
+        padding: {{ block.settings.padding }};
+        border-radius: {{ block.settings.border_radius }}px;
+        border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+        cursor: pointer;
+    }
+    .custom-button-{{ block.id }}.active {
+        background-color: {{ block.settings.active_background_color | default: 'linear-gradient(#000, #333)' }};
+        color: {{ block.settings.active_text_color | default: '#fff' }};
+    }
+</style>
+
+
+<button class="custom-button-{{ block.id }}" >
+  {{ block.settings.label }}
+</button>   
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const button = document.querySelector('.custom-button-{{ block.id }}');
+        button.addEventListener('click', function() {
+            button.classList.add('active');
+        });
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "number",
+      "id": "font_size",
+      "label": "Font Size",
+      "default": 16
+    },
+    {
+      "type": "number",
+      "id": "font_weight",
+      "label": "Font Weight",
+      "default": 400
+    },
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "Padding"
+    },
+    {
+      "type": "number",
+      "id": "border_radius",
+      "label": "Border Radius",
+      "default": 0,
+    },
+    {
+      "type": "number",
+      "id": "border_width",
+      "label": "Border Width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color"
+    },
+    {
+      "type": "color",
+      "id": "active_background_color",
+      "label": "Active Background Color",
+    },
+    {
+      "type": "color",
+      "id": "active_text_color",
+      "label": "Active Text Color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Button"
+    }
+  ]
+}
+{% endschema %}
