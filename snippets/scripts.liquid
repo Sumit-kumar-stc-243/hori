@@ -36,7 +36,10 @@
     blocking="render"
   {% endif %}
 ></script>
-
+<link
+  href="{{ 'swiper.min.js' | asset_url}}"
+  fetchpriority="high"
+>
 <link
   rel="modulepreload"
   href="{{ 'utilities.js' | asset_url }}"
