@@ -13,11 +13,8 @@
   #shopify-section-{{ section.id }} .custom-button.active {
     background: {{ block.settings.active_background_color | default: 'linear-gradient(#000, #333)' }};
     color: {{ block.settings.active_text_color | default: '#fff' }};
-    {% comment %} {% if block.settings.active_border == 'none' %}
-        border:none;
-    {% else %} {% endcomment %}
-        border: {{ block.settings.border_width_active }}px solid {{ block.settings.border_color_active }};
-    {% comment %} {% endif %} {% endcomment %}
+    border:none;
+    border-bottom: 1px solid #EE3224;
   }
 </style>
 
@@ -28,20 +25,22 @@
     {{ block.settings.label }}
   </button>
 </div>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const section = document.querySelector('#shopify-section-{{ section.id }}');
     if (!section) return;
 
     const buttons = section.querySelectorAll('.custom-button');
+    if (!buttons.length) return;
 
+    // ✅ FIX INITIAL STATE: only one active on load
+    buttons.forEach((btn) => btn.classList.remove('active'));
+    buttons[0].classList.add('active');
+
+    // ✅ Click handling (one active at a time)
     buttons.forEach((button) => {
       button.addEventListener('click', function () {
-        // remove active from all buttons in THIS section only
         buttons.forEach((btn) => btn.classList.remove('active'));
-
-        // add active to clicked button
         this.classList.add('active');
       });
     });
@@ -137,43 +136,6 @@
       "label": "Active Text Color",
       "default": "#fff",
       "visible_if": "{{ block.settings.active_state == 'true' }}"
-    },
-    {
-      "type": "select",
-      "id": "active_border",
-      "label": "Active Border",
-      "options": [
-        {
-          "value": "none",
-          "label": "None"
-        },
-        {
-          "value": "solid",
-          "label": "Solid"
-        }
-      ],
-      "default": "none",
-      "visible_if": "{{ block.settings.active_state == 'true' }}"
-    },
-    {
-      "type": "number",
-      "id": "border_radius_active",
-      "label": "Border Radius Active",
-      "default": 0,
-      "visible_if": "{{ block.settings.active_border == 'solid' }}"
-    },
-    {
-      "type": "number",
-      "id": "border_width_active",
-      "label": "Border Width Active",
-      "default": 1,
-      "visible_if": "{{ block.settings.active_border == 'solid' }}"
-    },
-    {
-      "type": "color",
-      "id": "border_color_active",
-      "label": "Border Color Active",
-      "visible_if": "{{ block.settings.active_border == 'solid' }}"
     }
   ],
   "presets": [
