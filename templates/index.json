@@ -110,7 +110,6 @@
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "link": "",
                     "background_color": "#000000",
                     "text_color": "#ffffff",
                     "font_size": 16,
@@ -119,13 +118,9 @@
                     "border_radius": 5,
                     "border_width": 1,
                     "border_color": "#ffcece",
-                    "active_state": "true",
-                    "active_background_color": "linear-gradient(1deg, rgba(238, 50, 36, 0.38) 35%, rgba(187, 48, 254, 0.22) 100%)",
+                    "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
                     "active_text_color": "#ffffff",
-                    "active_border": "solid",
-                    "border_radius_active": 0,
-                    "border_width_active": 4,
-                    "border_color_active": "#000000"
+                    "show_all_btn_or_not": "activeBtn"
                   },
                   "blocks": {}
                 },
@@ -134,7 +129,6 @@
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "link": "",
                     "background_color": "#000000",
                     "text_color": "#ffffff",
                     "font_size": 16,
@@ -143,13 +137,9 @@
                     "border_radius": 5,
                     "border_width": 1,
                     "border_color": "#ffcece",
-                    "active_state": "false",
                     "active_background_color": "#ff9c9c",
                     "active_text_color": "#ffffff",
-                    "active_border": "none",
-                    "border_radius_active": 0,
-                    "border_width_active": 1,
-                    "border_color_active": ""
+                    "show_all_btn_or_not": "activeBtn"
                   },
                   "blocks": {}
                 }
@@ -204,7 +194,6 @@
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "link": "",
                     "background_color": "#000000",
                     "text_color": "#ffffff",
                     "font_size": 16,
@@ -213,13 +202,9 @@
                     "border_radius": 5,
                     "border_width": 1,
                     "border_color": "#ffcece",
-                    "active_state": "false",
                     "active_background_color": "#ff9c9c",
                     "active_text_color": "#ffffff",
-                    "active_border": "none",
-                    "border_radius_active": 0,
-                    "border_width_active": 1,
-                    "border_color_active": ""
+                    "show_all_btn_or_not": "activeBtn"
                   },
                   "blocks": {}
                 },
@@ -228,7 +213,6 @@
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "link": "",
                     "background_color": "#000000",
                     "text_color": "#ffffff",
                     "font_size": 16,
@@ -237,13 +221,9 @@
                     "border_radius": 5,
                     "border_width": 1,
                     "border_color": "#ffcece",
-                    "active_state": "false",
                     "active_background_color": "#ff9c9c",
                     "active_text_color": "#ffffff",
-                    "active_border": "none",
-                    "border_radius_active": 0,
-                    "border_width_active": 1,
-                    "border_color_active": ""
+                    "show_all_btn_or_not": "activeBtn"
                   },
                   "blocks": {}
                 }
