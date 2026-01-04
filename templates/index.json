@@ -124,7 +124,7 @@
                   },
                   "blocks": {}
                 },
-                "custom_button_Uw7iRt": {
+                "custom_button_aYJckE": {
                   "type": "custom-button",
                   "name": "Custom Button",
                   "settings": {
@@ -132,12 +132,12 @@
                     "background_color": "#000000",
                     "text_color": "#ffffff",
                     "font_size": 16,
-                    "font_weight": 400,
+                    "font_weight": 500,
                     "padding": "16px 68px",
                     "border_radius": 5,
                     "border_width": 1,
                     "border_color": "#ffcece",
-                    "active_background_color": "#ff9c9c",
+                    "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
                     "active_text_color": "#ffffff",
                     "show_all_btn_or_not": "activeBtn"
                   },
@@ -146,98 +146,13 @@
               },
               "block_order": [
                 "custom_button_kQJPbh",
-                "custom_button_Uw7iRt"
-              ]
-            },
-            "group_FeLLHy": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "content_direction": "row",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 27,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "link": "",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "custom_button_etEHwV": {
-                  "type": "custom-button",
-                  "name": "Custom Button",
-                  "settings": {
-                    "label": "Shop Now",
-                    "background_color": "#000000",
-                    "text_color": "#ffffff",
-                    "font_size": 16,
-                    "font_weight": 400,
-                    "padding": "16px 68px",
-                    "border_radius": 5,
-                    "border_width": 1,
-                    "border_color": "#ffcece",
-                    "active_background_color": "#ff9c9c",
-                    "active_text_color": "#ffffff",
-                    "show_all_btn_or_not": "activeBtn"
-                  },
-                  "blocks": {}
-                },
-                "custom_button_kmP3UL": {
-                  "type": "custom-button",
-                  "name": "Custom Button",
-                  "settings": {
-                    "label": "Shop Now",
-                    "background_color": "#000000",
-                    "text_color": "#ffffff",
-                    "font_size": 16,
-                    "font_weight": 400,
-                    "padding": "16px 68px",
-                    "border_radius": 5,
-                    "border_width": 1,
-                    "border_color": "#ffcece",
-                    "active_background_color": "#ff9c9c",
-                    "active_text_color": "#ffffff",
-                    "show_all_btn_or_not": "activeBtn"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "custom_button_etEHwV",
-                "custom_button_kmP3UL"
+                "custom_button_aYJckE"
               ]
             }
           },
           "block_order": [
             "custom_heading_CrP37E",
-            "group_nyzgLa",
-            "group_FeLLHy"
+            "group_nyzgLa"
           ]
         }
       },
