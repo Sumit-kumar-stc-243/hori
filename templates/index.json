@@ -115,7 +115,7 @@
                     "font_size": 16,
                     "font_weight": 500,
                     "padding": "16px 68px",
-                    "border_radius": 5,
+                    "border_radius": 2,
                     "border_width": 1,
                     "border_color": "#ffcece",
                     "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
