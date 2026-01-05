@@ -110,7 +110,7 @@
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "background_color": "#000000",
+                    "background_color": "#ffffff",
                     "text_color": "#ffffff",
                     "font_size": 16,
                     "font_weight": 500,
@@ -243,14 +243,7 @@
         "custom_swiper_wYXwyN": {
           "type": "custom-swiper",
           "name": "Peek Swiper Slider",
-          "settings": {
-            "desktop_width": 50,
-            "mobile_width": 90,
-            "image_ratio": 33,
-            "inactive_scale": 85,
-            "mobile_inactive_scale": 95,
-            "autoplay_delay": 5000
-          },
+          "settings": {},
           "blocks": {
             "swiper_slide_THC8YU": {
               "type": "swiper-slide",
