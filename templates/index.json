@@ -110,7 +110,25 @@
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "link": "",
+                    "background_color": "#000000",
+                    "text_color": "#ffffff",
+                    "font_size": 16,
+                    "font_weight": 500,
+                    "padding": "16px 68px",
+                    "border_radius": 2,
+                    "border_width": 1,
+                    "border_color": "#ffcece",
+                    "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
+                    "active_text_color": "#ffffff",
+                    "show_all_btn_or_not": "activeBtn"
+                  },
+                  "blocks": {}
+                },
+                "custom_button_aYJckE": {
+                  "type": "custom-button",
+                  "name": "Custom Button",
+                  "settings": {
+                    "label": "Shop Now",
                     "background_color": "#000000",
                     "text_color": "#ffffff",
                     "font_size": 16,
@@ -119,47 +137,19 @@
                     "border_radius": 5,
                     "border_width": 1,
                     "border_color": "#ffcece",
-                    "active_state": "true",
-                    "active_background_color": "linear-gradient(1deg, rgba(238, 50, 36, 0.38) 35%, rgba(187, 48, 254, 0.22) 100%)",
+                    "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
                     "active_text_color": "#ffffff",
-                    "active_border": "solid",
-                    "border_radius_active": 0,
-                    "border_width_active": 4,
-                    "border_color_active": "#000000"
-                  },
-                  "blocks": {}
-                },
-                "custom_button_Uw7iRt": {
-                  "type": "custom-button",
-                  "name": "Custom Button",
-                  "settings": {
-                    "label": "Shop Now",
-                    "link": "",
-                    "background_color": "#000000",
-                    "text_color": "#ffffff",
-                    "font_size": 16,
-                    "font_weight": 400,
-                    "padding": "16px 68px",
-                    "border_radius": 5,
-                    "border_width": 1,
-                    "border_color": "#ffcece",
-                    "active_state": "false",
-                    "active_background_color": "#ff9c9c",
-                    "active_text_color": "#ffffff",
-                    "active_border": "none",
-                    "border_radius_active": 0,
-                    "border_width_active": 1,
-                    "border_color_active": ""
+                    "show_all_btn_or_not": "activeBtn"
                   },
                   "blocks": {}
                 }
               },
               "block_order": [
                 "custom_button_kQJPbh",
-                "custom_button_Uw7iRt"
+                "custom_button_aYJckE"
               ]
             },
-            "group_FeLLHy": {
+            "group_RaeBVz": {
               "type": "group",
               "name": "t:names.group",
               "settings": {
@@ -199,70 +189,95 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "custom_button_etEHwV": {
+                "custom_button_gzxPFq": {
                   "type": "custom-button",
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "link": "",
                     "background_color": "#000000",
                     "text_color": "#ffffff",
                     "font_size": 16,
-                    "font_weight": 400,
+                    "font_weight": 500,
                     "padding": "16px 68px",
                     "border_radius": 5,
                     "border_width": 1,
                     "border_color": "#ffcece",
-                    "active_state": "false",
-                    "active_background_color": "#ff9c9c",
+                    "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
                     "active_text_color": "#ffffff",
-                    "active_border": "none",
-                    "border_radius_active": 0,
-                    "border_width_active": 1,
-                    "border_color_active": ""
+                    "show_all_btn_or_not": "activeBtn"
                   },
                   "blocks": {}
                 },
-                "custom_button_kmP3UL": {
+                "custom_button_bhUzQJ": {
                   "type": "custom-button",
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "link": "",
                     "background_color": "#000000",
                     "text_color": "#ffffff",
                     "font_size": 16,
-                    "font_weight": 400,
+                    "font_weight": 500,
                     "padding": "16px 68px",
                     "border_radius": 5,
                     "border_width": 1,
                     "border_color": "#ffcece",
-                    "active_state": "false",
-                    "active_background_color": "#ff9c9c",
+                    "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
                     "active_text_color": "#ffffff",
-                    "active_border": "none",
-                    "border_radius_active": 0,
-                    "border_width_active": 1,
-                    "border_color_active": ""
+                    "show_all_btn_or_not": "activeBtn"
                   },
                   "blocks": {}
                 }
               },
               "block_order": [
-                "custom_button_etEHwV",
-                "custom_button_kmP3UL"
+                "custom_button_gzxPFq",
+                "custom_button_bhUzQJ"
               ]
             }
           },
           "block_order": [
             "custom_heading_CrP37E",
             "group_nyzgLa",
-            "group_FeLLHy"
+            "group_RaeBVz"
+          ]
+        },
+        "custom_swiper_wYXwyN": {
+          "type": "custom-swiper",
+          "name": "Peek Swiper Slider",
+          "settings": {
+            "desktop_width": 50,
+            "mobile_width": 90,
+            "image_ratio": 33,
+            "inactive_scale": 85,
+            "mobile_inactive_scale": 95,
+            "autoplay_delay": 5000
+          },
+          "blocks": {
+            "swiper_slide_THC8YU": {
+              "type": "swiper-slide",
+              "name": "Swiper Slide",
+              "settings": {
+                "image": "shopify://shop_images/mcare2.png"
+              },
+              "blocks": {}
+            },
+            "swiper_slide_gDQd4a": {
+              "type": "swiper-slide",
+              "name": "Swiper Slide",
+              "settings": {
+                "image": "shopify://shop_images/image34.png"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "swiper_slide_THC8YU",
+            "swiper_slide_gDQd4a"
           ]
         }
       },
       "block_order": [
-        "group_AM4ffH"
+        "group_AM4ffH",
+        "custom_swiper_wYXwyN"
       ],
       "name": "t:names.hero",
       "settings": {
