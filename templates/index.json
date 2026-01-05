@@ -120,7 +120,7 @@
                     "border_color": "#ffcece",
                     "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
                     "active_text_color": "#ffffff",
-                    "show_all_btn_or_not": "activeBtn"
+                    "show_all_btn_or_not": "noBorder"
                   },
                   "blocks": {}
                 },
@@ -243,14 +243,7 @@
         "custom_swiper_wYXwyN": {
           "type": "custom-swiper",
           "name": "Peek Swiper Slider",
-          "settings": {
-            "desktop_width": 50,
-            "mobile_width": 90,
-            "image_ratio": 33,
-            "inactive_scale": 85,
-            "mobile_inactive_scale": 95,
-            "autoplay_delay": 5000
-          },
+          "settings": {},
           "blocks": {
             "swiper_slide_THC8YU": {
               "type": "swiper-slide",
