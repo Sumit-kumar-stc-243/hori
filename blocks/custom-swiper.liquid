@@ -1,4 +1,4 @@
-{% style %}
+<style>
   :root {
     --swiper-image-ratio: 33.3%; /* ratio 16:9 = 56.25% */
 
@@ -12,7 +12,7 @@
 
   .container {
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     display: flex;
     align-items: center;
@@ -21,13 +21,13 @@
   .swiper {
     position: relative;
     width: 100%;
-    height: calc(var(--swiper-width) * var(--swiper-image-ratio) / 100%);
     overflow: hidden;
   }
 
   .swiper-slide {
     position: relative;
     width: var(--swiper-width);
+    height: 200px;
     opacity: 0.5;
     transform: scale(0.84);
     transition: all 0.3s ease-in-out;
@@ -64,7 +64,7 @@
     background-color: #929ec9;
   }
 
-  .swiper-button-next,
+  .swiper-next-{{ block.id }},
   .swiper-button-prev {
     padding: 8px;
     width: 12px;
@@ -74,18 +74,18 @@
     border-radius: 50%;
   }
 
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
+  .swiper-next-{{ block.id }}::after,
+  .swiper-prev-{{ block.id }}::after {
     color: #fff;
     font-size: 12px;
   }
 
-  .swiper-button-next {
+  .swiper-next-{{ block.id }} {
     transform: translate(50%, -50%);
     right: calc((100% - var(--swiper-width)) / 2);
   }
 
-  .swiper-button-prev {
+  .swiper-prev-{{ block.id }} {
     transform: translate(-50%, -50%);
     left: calc((100% - var(--swiper-width)) / 2);
   }
@@ -112,34 +112,70 @@
       left: calc((100% - var(--swiper-mobile-width)) / 2);
     }
   }
-{% endstyle %}
+</style>
 
 <div class="container">
-  <div class="swiper">
+  <div class="swiper swiper-{{ block.id }}">
+    <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
-      {% for child_block in block.blocks %}
-        {% render child_block %}
-      {% endfor %}
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="swiper-image">
+          <div class="image"></div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="swiper-image">
+          <div class="image"></div>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="swiper-image">
+          <div class="image"></div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-image">
+          <div class="image"></div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-image">
+          <div class="image"></div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-image">
+          <div class="image"></div>
+        </div>
+      </div>
     </div>
 
     <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <div class="swiper-prev-{{ block.id }}"></div>
+    <div class="swiper-next-{{ block.id }}"></div>
   </div>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    new Swiper('.swiper', {
+    const swiperEl = document.querySelector('.swiper-{{ block.id }}');
+    console.log('..............not working');
+    if (!swiperEl || swiperEl.swiper) return;
+    console.log('..............working');
+    console.log(document.querySelector('.swiper-prev-{{ block.id }}') , 'div')
+    new Swiper(swiperEl, {
+      loop: true,
       slidesPerView: 'auto',
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: true,
-      },
       centeredSlides: true,
+      autoplay: {
+        delay: 2000,
+      },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: '.swiper-next-{{ block.id }}',
+        prevEl: '.swiper-prev-{{ block.id }}',
       },
     });
   });
@@ -155,11 +191,6 @@
       "label": "slide image"
     }
   ],
-  "blocks": [
-    {
-      "type": "swiper-slide"
-    }
-  ],
-  "presets": [{ "name": "swiper" }]
+  "presets": [{ "name": "custom swiper" }]
 }
 {% endschema %}
