@@ -21,7 +21,7 @@
   .corner-border.right  { bottom: 5px; right: 5px; transform: rotate(180deg); }
   .corner-border.bottom { bottom: 5px; left: 5px; transform: rotate(270deg); }
 
-  #shopify-section-{{ section.id }} .custom-button {
+  #shopify-section-{{ section.id }} .custom-button#{{ block.id }} {
     background-color: {{ block.settings.background_color }};
     color: {{ block.settings.text_color }};
     font-size: {{ block.settings.font_size }}px;
@@ -32,7 +32,7 @@
     cursor: pointer;
   }
 
-  #shopify-section-{{ section.id }} .custom-button.active {
+  #shopify-section-{{ section.id }} .custom-button.active#{{ block.id }} {
     background: {{ block.settings.active_background_color }};
     color: {{ block.settings.active_text_color }};
     border: none;
@@ -41,7 +41,7 @@
 </style>
 
 <div class="custom-button-wrapper">
-  <button class="custom-button">
+  <button class="custom-button" id="{{ block.id }}">
     {{ block.settings.label }}
   </button>
 
