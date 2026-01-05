@@ -106,7 +106,7 @@
               },
               "blocks": {
                 "custom_button_kQJPbh": {
-                  "type": "custom-button",
+                  "type": "_custom-button",
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
@@ -125,7 +125,7 @@
                   "blocks": {}
                 },
                 "custom_button_aYJckE": {
-                  "type": "custom-button",
+                  "type": "_custom-button",
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
@@ -190,7 +190,7 @@
               },
               "blocks": {
                 "custom_button_gzxPFq": {
-                  "type": "custom-button",
+                  "type": "_custom-button",
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
@@ -209,7 +209,7 @@
                   "blocks": {}
                 },
                 "custom_button_bhUzQJ": {
-                  "type": "custom-button",
+                  "type": "_custom-button",
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
