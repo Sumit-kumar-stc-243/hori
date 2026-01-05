@@ -1,189 +1,158 @@
-<link rel="stylesheet" href="{{ 'swiper-min.css' | asset_url }}">
-<script src="{{ 'swiper.min.js' | asset_url }}" defer></script>
-
-<div id="peek-swiper-{{ section.id }}">
-  <div class="peek-swiper-container">
-    <div class="swiper peek-swiper">
-      <div class="swiper-wrapper">
-        {% for slide in block %}
-          {% content_for 'blocks' %}
-        {% endfor %}
-      </div>
-
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
-  </div>
-</div>
-
 {% style %}
-  #peek-swiper-{{ section.id }} {
-    --swiper-image-ratio: {{ section.settings.image_ratio }}%;
-    --swiper-width: {{ section.settings.desktop_width }}%;
-    --swiper-inactive-scale: {{ section.settings.inactive_scale | divided_by: 100 }};
-    --swiper-mobile-width: {{ section.settings.mobile_width }}%;
-    --swiper-mobile-inactive-scale: {{ section.settings.mobile_inactive_scale | divided_by: 100 }};
+  :root {
+    --swiper-image-ratio: 33.3%; /* ratio 16:9 = 56.25% */
+
+    --swiper-width: 50%;
+    --swiper-inactive-scale: 0.85; /* makes the other slide smaller */
+
+    /* responsive settings */
+    --swiper-mobile-width: 90%;
+    --swiper-mobile-inactive-scale: 0.95;
   }
 
-  #peek-swiper-{{ section.id }} .peek-swiper-container {
+  .container {
     position: relative;
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
   }
 
-  #peek-swiper-{{ section.id }} .peek-swiper {
+  .swiper {
     position: relative;
     width: 100%;
     height: calc(var(--swiper-width) * var(--swiper-image-ratio) / 100%);
     overflow: hidden;
   }
 
-  #peek-swiper-{{ section.id }} .swiper-slide {
+  .swiper-slide {
     position: relative;
     width: var(--swiper-width);
     opacity: 0.5;
-    transform: scale(var(--swiper-inactive-scale));
+    transform: scale(0.84);
     transition: all 0.3s ease-in-out;
-    border-radius: 8px;
     overflow: hidden;
+    border-radius: 0.4285rem;
   }
 
-  #peek-swiper-{{ section.id }} .swiper-slide-active {
+  .swiper-backface-hidden .swiper-slide {
+    transform: scale(0.84) translateZ(0);
+  }
+
+  .swiper-slide.swiper-slide-active {
     transform: scale(1) !important;
     opacity: 1 !important;
   }
 
-  #peek-swiper-{{ section.id }} .peek-swiper-image {
+  .swiper-backface-hidden .swiper-slide.swiper-slide-active {
+    transform: scale(1) translateZ(0) !important;
+  }
+
+  .swiper-image {
     position: relative;
     width: 100%;
-    padding-top: var(--swiper-image-ratio)%;
+    padding-top: var(--swiper-image-ratio);
   }
 
-  #peek-swiper-{{ section.id }} .peek-swiper-image img {
+  .swiper-image .image {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-color: #929ec9;
   }
 
-  #peek-swiper-{{ section.id }} .swiper-button-next,
-  #peek-swiper-{{ section.id }} .swiper-button-prev {
-    width: 28px;
-    height: 28px;
-    background: rgba(0,0,0,0.4);
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 8px;
+    width: 12px;
+    height: 12px;
+    margin-top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 50%;
   }
 
-  #peek-swiper-{{ section.id }} .swiper-button-next::after,
-  #peek-swiper-{{ section.id }} .swiper-button-prev::after {
-    font-size: 12px;
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
     color: #fff;
+    font-size: 12px;
   }
 
-  #peek-swiper-{{ section.id }} .swiper-button-next {
+  .swiper-button-next {
+    transform: translate(50%, -50%);
     right: calc((100% - var(--swiper-width)) / 2);
   }
 
-  #peek-swiper-{{ section.id }} .swiper-button-prev {
+  .swiper-button-prev {
+    transform: translate(-50%, -50%);
     left: calc((100% - var(--swiper-width)) / 2);
   }
 
-  @media (max-width: 768px) {
-    #peek-swiper-{{ section.id }} .peek-swiper {
+  @media only screen and (max-width: 768px) {
+    .swiper {
       height: calc(var(--swiper-mobile-width) * var(--swiper-image-ratio) / 100%);
     }
 
-    #peek-swiper-{{ section.id }} .swiper-slide {
+    .swiper-slide {
       width: var(--swiper-mobile-width);
       transform: scale(var(--swiper-mobile-inactive-scale));
     }
 
-    #peek-swiper-{{ section.id }} .swiper-button-next {
+    .swiper-backface-hidden .swiper-slide.swiper-slide {
+      transform: scale(var(--swiper-mobile-inactive-scale)) translateZ(0);
+    }
+
+    .swiper-button-next {
       right: calc((100% - var(--swiper-mobile-width)) / 2);
     }
 
-    #peek-swiper-{{ section.id }} .swiper-button-prev {
+    .swiper-button-prev {
       left: calc((100% - var(--swiper-mobile-width)) / 2);
     }
   }
 {% endstyle %}
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const swiperContainer = document.querySelector('#peek-swiper-{{ section.id }} .peek-swiper');
-      if(!swiperContainer) return;
+<div class="container">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% for child_block in block.blocks %}
+        {% render child_block %}
+      {% endfor %}
+    </div>
 
-      new Swiper(swiperContainer, {
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        autoplay: {
-          delay: {{ section.settings.autoplay_delay | default: 5000 }},
-          disableOnInteraction: true
-        },
-        navigation: {
-          nextEl: '#peek-swiper-{{ section.id }} .swiper-button-next',
-          prevEl: '#peek-swiper-{{ section.id }} .swiper-button-prev'
-        }
-      });
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.swiper', {
+      slidesPerView: 'auto',
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: true,
+      },
+      centeredSlides: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
     });
+  });
 </script>
 
 {% schema %}
 {
-  "name": "Peek Swiper Slider",
+  "name": "swiper slide",
   "settings": [
     {
-      "type": "range",
-      "id": "desktop_width",
-      "label": "Desktop slide width (%)",
-      "min": 30,
-      "max": 80,
-      "step": 1,
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "mobile_width",
-      "label": "Mobile slide width (%)",
-      "min": 70,
-      "max": 100,
-      "step": 1,
-      "default": 90
-    },
-    {
-      "type": "range",
-      "id": "image_ratio",
-      "label": "Image ratio (%)",
-      "min": 20,
-      "max": 80,
-      "step": 1,
-      "default": 33
-    },
-    {
-      "type": "range",
-      "id": "inactive_scale",
-      "label": "Inactive slide scale (desktop, 0-100%)",
-      "min": 50,
-      "max": 100,
-      "step": 1,
-      "default": 85
-    },
-    {
-      "type": "range",
-      "id": "mobile_inactive_scale",
-      "label": "Inactive slide scale (mobile, 0-100%)",
-      "min": 50,
-      "max": 100,
-      "step": 1,
-      "default": 95
-    },
-    {
-      "type": "number",
-      "id": "autoplay_delay",
-      "label": "Autoplay delay (ms)",
-      "default": 5000
+      "type": "image_picker",
+      "id": "image",
+      "label": "slide image"
     }
   ],
   "blocks": [
@@ -191,10 +160,6 @@
       "type": "swiper-slide"
     }
   ],
-  "presets": [
-    {
-      "name": "Peek Swiper Slider"
-    }
-  ]
+  "presets": [{ "name": "swiper" }]
 }
 {% endschema %}
