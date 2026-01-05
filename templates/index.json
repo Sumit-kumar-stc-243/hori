@@ -120,7 +120,7 @@
                     "border_color": "#ffcece",
                     "active_background_color": "linear-gradient(1deg, rgba(240, 93, 82, 0.64) 35%, rgba(240, 125, 90, 0.57) 59%, rgba(187, 48, 254, 0.22) 100%)",
                     "active_text_color": "#ffffff",
-                    "show_all_btn_or_not": "noBorder"
+                    "show_all_btn_or_not": "activeBtn"
                   },
                   "blocks": {}
                 },
