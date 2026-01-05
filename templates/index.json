@@ -110,7 +110,7 @@
                   "name": "Custom Button",
                   "settings": {
                     "label": "Shop Now",
-                    "background_color": "#000000",
+                    "background_color": "#ffffff",
                     "text_color": "#ffffff",
                     "font_size": 16,
                     "font_weight": 500,
