@@ -244,28 +244,7 @@
           "type": "custom-swiper",
           "name": "Peek Swiper Slider",
           "settings": {},
-          "blocks": {
-            "swiper_slide_THC8YU": {
-              "type": "swiper-slide",
-              "name": "Swiper Slide",
-              "settings": {
-                "image": "shopify://shop_images/mcare2.png"
-              },
-              "blocks": {}
-            },
-            "swiper_slide_gDQd4a": {
-              "type": "swiper-slide",
-              "name": "Swiper Slide",
-              "settings": {
-                "image": "shopify://shop_images/image34.png"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "swiper_slide_THC8YU",
-            "swiper_slide_gDQd4a"
-          ]
+          "blocks": {}
         }
       },
       "block_order": [
@@ -283,7 +262,7 @@
         "media_type_2_mobile": "image",
         "link": "",
         "open_in_new_tab": false,
-        "content_direction": "column",
+        "content_direction": "row",
         "vertical_on_mobile": true,
         "horizontal_alignment": "space-between",
         "vertical_alignment": "flex-end",
